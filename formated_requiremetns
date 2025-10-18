@@ -1,0 +1,110 @@
+
+🧩 Step 1: Define the Goal / Vision
+
+Goal:
+A web app that helps users learn sight words through interactive flashcards, tracking progress and providing insights into learning patterns.
+
+Primary users:
+
+Kids or learners trying to master sight words
+
+Parents/teachers who might help manage decks
+
+🧍‍♀️ Step 2: Identify Stakeholders
+Stakeholder	Role / Interest
+Learner (User)	Uses flashcards, tracks progress
+Parent/Teacher (Optional)	Adds words/decks, monitors progress
+Developer/Admin	Maintains app, adds new features
+🧠 Step 3: Functional Requirements (What the system must do)
+
+Let’s break them into modules:
+
+1️⃣ User Management
+
+Create and maintain user profiles (name, age, etc.)
+
+Store each user’s learning history and progress
+
+Optional: Login system (username/password or localStorage-based simple profile)
+
+2️⃣ Flashcard Module
+
+Show one word per card
+
+User can:
+
+Mark “I know this” (✅ / Space / Enter)
+
+Mark “I don’t know this” (❌ / skip button)
+
+Move to next card automatically
+
+3️⃣ Word Management
+
+Add new sight words manually
+
+Import pre-defined sight word lists (optional future feature)
+
+Organize words into decks or categories
+
+4️⃣ Learning History & Progress Tracking
+
+Track for each user:
+
+Words shown
+
+Correct/incorrect attempts
+
+Date/time of last attempt
+
+Maintain stats:
+
+% accuracy per deck
+
+Words most often missed
+
+Words fully learned (e.g., 3 correct in a row)
+
+Detect the difficulty level based on the card
+
+5️⃣ Deck Management
+
+Auto-generate random decks:
+
+Based on number of cards requested
+
+Can mix learned/unlearned words
+
+Allow manual creation of decks by user
+
+6️⃣ Reports & Analysis
+
+Dashboard:
+
+Total words learned
+
+Words needing revision
+
+Accuracy over time
+
+Visual charts (bar or pie chart for analysis)
+
+7️⃣ UI/UX Requirements
+
+Simple, kid-friendly interface
+
+Keyboard shortcuts (space/enter)
+
+Option for light/dark mode (optional)
+
+Responsive design for mobile/tablet
+
+⚙️ Step 4: Non-Functional Requirements
+Type	Description
+Performance	Fast card flipping and minimal lag
+Persistence	Store user data locally (localStorage) or in backend DB
+Scalability	Should handle multiple users and decks
+Usability	Clean, minimal, easy for children
+Security	Protect user profiles (if online login used)
+Portability	Works on web and mobile browsers
+
