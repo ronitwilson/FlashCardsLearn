@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  name      String
+  age       Int?
+  createdAt DateTime  @default(now())
+  attempts  Attempt[]
+  decks     Deck[]
+}
+
+model Word {
+  id        String      @id @default(cuid())
+  text      String      @unique
+  difficulty String?
+  createdAt DateTime    @default(now())
+  deckWords DeckWord[]
+  attempts  Attempt[]
+}
+
+model Deck {
+  id        String      @id @default(cuid())
+  name      String
+  generated Boolean     @default(false)
+  createdAt DateTime    @default(now())
+  wordLinks DeckWord[]
+  attempts  Attempt[]
+  userId    String?
+  user      User?       @relation(fields: [userId], references: [id])
+}
+
+model DeckWord {
+  deckId String
+  wordId String
+  deck   Deck   @relation(fields: [deckId], references: [id])
+  word   Word   @relation(fields: [wordId], references: [id])
+  @@id([deckId, wordId])
+}
+
+model Attempt {
+  id        String    @id @default(cuid())
+  userId    String
+  wordId    String
+  deckId    String?
+  isCorrect Boolean
+  timestamp DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id])
+  word      Word      @relation(fields: [wordId], references: [id])
+  deck      Deck?     @relation(fields: [deckId], references: [id])
+  @@index([userId])
+  @@index([wordId])
+  @@index([deckId])
+}

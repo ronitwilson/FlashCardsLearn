@@ -1,49 +1,24 @@
-version: '3.8'
-
+version: '3.9'
 services:
-  frontend:
-    build: 
-      context: ./frontend
-    ports:
-      - "8080:80"
-    depends_on:
-      - backend
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    environment:
-      - NODE_ENV=development
-      - VUE_APP_API_URL=http://localhost:3000/api
-
   backend:
-    build:
-      context: ./backend
+    build: ./backend/nest-backend
+    container_name: flashcards-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: file:./dev.db
+    volumes:
+      - backend_data:/app/prisma
     ports:
       - "3000:3000"
+  frontend:
+    build: ./frontend/vue-app
+    container_name: flashcards-frontend
+    restart: unless-stopped
     depends_on:
-      - db
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
-    environment:
-      - NODE_ENV=development
-      - DATABASE_HOST=db
-      - DATABASE_PORT=5432
-      - DATABASE_USERNAME=postgres
-      - DATABASE_PASSWORD=postgres
-      - DATABASE_NAME=flashcards
-
-  db:
-    build:
-      context: ./db
+      - backend
     ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=flashcards
-
+      - "8080:80"
 volumes:
-  postgres_data:
+  backend_data:

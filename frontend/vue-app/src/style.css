@@ -1,0 +1,4 @@
+body { background:#fafafa; color:#222; }
+button { background:#1976d2; color:#fff; border:none; padding:.5rem .75rem; border-radius:4px; }
+button:hover { background:#145ea8; }
+input { padding:.4rem .5rem; }

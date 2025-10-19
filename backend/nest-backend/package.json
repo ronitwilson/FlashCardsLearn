@@ -1,0 +1,36 @@
+{
+  "name": "flashcards-nest-backend",
+  "version": "0.1.0",
+  "description": "Sight words flashcards learning backend (NestJS)",
+  "private": true,
+  "scripts": {
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "build": "nest build",
+    "start:prod": "node dist/src/main.js",
+    "lint": "eslint . --ext .ts",
+    "db:sync": "ts-node src/scripts/typeorm-sync.ts",
+    "db:seed": "ts-node src/scripts/typeorm-seed.ts",
+    "test": "echo 'Tests to be added'"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/core": "^10.0.0",
+    "@nestjs/platform-express": "^10.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.8.0",
+    "typeorm": "^0.3.20",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.0.0",
+    "@nestjs/schematics": "^10.0.0",
+    "@nestjs/testing": "^10.0.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "ts-node": "^10.9.2"
+  }
+}
